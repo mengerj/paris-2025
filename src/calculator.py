@@ -12,11 +12,13 @@ Number = Union[int, float]
 
 class CalculatorError(Exception):
     """Base exception for calculator operations."""
+
     pass
 
 
 class DivisionByZeroError(CalculatorError):
     """Raised when attempting to divide by zero."""
+
     pass
 
 
@@ -124,4 +126,4 @@ class Calculator:
             >>> calc.power(2, 3)
             8
         """
-        return base ** exponent
+        return base**exponent

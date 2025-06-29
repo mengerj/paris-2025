@@ -102,20 +102,20 @@ branch-from-issue:
 
 # Workflow monitoring and fixing
 check-workflows:
-	@python scripts/check_workflows.py --suggest-fixes
+	@python3 scripts/check_workflows.py --suggest-fixes
 
 check-workflows-json:
-	@python scripts/check_workflows.py --json --suggest-fixes
+	@python3 scripts/check_workflows.py --json --suggest-fixes
 
 auto-fix:
-	@python scripts/auto_fix_workflow.py --branch $$(git branch --show-current) --commit
+	@python3 scripts/auto_fix_workflow.py --branch $$(git branch --show-current) --commit
 
 auto-fix-push:
-	@python scripts/auto_fix_workflow.py --branch $$(git branch --show-current) --commit --push
+	@python3 scripts/auto_fix_workflow.py --branch $$(git branch --show-current) --commit --push
 
 workflow-status:
 	@echo "📊 Current Workflow Status:"
-	@python scripts/check_workflows.py
+	@python3 scripts/check_workflows.py
 	@echo ""
 	@echo "🔗 Recent workflow runs:"
 	@gh run list --limit 5

@@ -165,16 +165,19 @@ class RobustGitHubCLI:
         runs_data = self.run_gh_command([
             'run', 'list',
             '--limit', '10',
-            '--json', 'status,conclusion,headBranch,workflowName,createdAt,htmlUrl'
+            '--json', 'status,conclusion,headBranch,workflowName,createdAt,url'
         ])
 
         if not runs_data:
             return {'error': 'Could not fetch workflow runs'}
 
-        # Process workflow data
-        runs = runs_data.get('workflow_runs', runs_data) if isinstance(runs_data.get('workflow_runs'), list) else []
-        if not runs and isinstance(runs_data, list):
+        # Process workflow data - GitHub CLI returns list directly, API returns dict with workflow_runs
+        if isinstance(runs_data, list):
             runs = runs_data
+        elif isinstance(runs_data, dict) and 'workflow_runs' in runs_data:
+            runs = runs_data['workflow_runs']
+        else:
+            runs = []
 
         status_summary = {
             'total_runs': len(runs),
@@ -197,7 +200,7 @@ class RobustGitHubCLI:
 
         pr_data = self.run_gh_command([
             'pr', 'view', pr_number,
-            '--json', 'title,state,mergeable,statusCheckRollup,number,htmlUrl'
+            '--json', 'title,state,mergeable,statusCheckRollup,number,url'
         ])
 
         if not pr_data:

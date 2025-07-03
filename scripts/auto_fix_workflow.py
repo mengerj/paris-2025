@@ -9,10 +9,7 @@ create commits with the fixes.
 import subprocess
 import sys
 from pathlib import Path
-from typing import Any
-import json
-import tempfile
-import os
+from typing import Any, Optional
 
 from check_workflows import WorkflowChecker
 
@@ -22,9 +19,11 @@ class AutoFixer:
 
     def __init__(self, dry_run: bool = False):
         self.dry_run = dry_run
-        self.fixes_applied = []
+        self.fixes_applied: list[str] = []
 
-    def run_command(self, cmd: list[str], cwd: Path | None = None) -> subprocess.CompletedProcess[str]:
+    def run_command(
+        self, cmd: list[str], cwd: Path | None = None
+    ) -> subprocess.CompletedProcess[str]:
         """Run a command and return the result."""
         if self.dry_run:
             print(f"[DRY RUN] Would run: {' '.join(cmd)}")

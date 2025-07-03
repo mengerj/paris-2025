@@ -11,9 +11,10 @@ import json
 import os
 import subprocess
 import sys
-from typing import Optional, Any, Union
-import requests
 from pathlib import Path
+from typing import Any, Optional, Union
+
+import requests
 
 
 class RobustGitHubCLI:

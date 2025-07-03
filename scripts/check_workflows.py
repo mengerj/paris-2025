@@ -9,9 +9,9 @@ and can automatically suggest or make adjustments based on failures.
 import json
 import subprocess
 import sys
-from typing import Optional, Any
 from dataclasses import dataclass
 from pathlib import Path
+from typing import Any, Optional
 
 
 @dataclass

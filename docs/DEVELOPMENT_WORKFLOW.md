@@ -228,19 +228,19 @@ from pathlib import Path
 from datetime import datetime
 
 def process_user_data(
-    user_data: Dict[str, Any],
-    validation_rules: List[str],
+    user_data: dict[str, Any],
+    validation_rules: list[str],
     output_format: str = "json",
     include_metadata: bool = True
-) -> Tuple[Dict[str, Any], List[str]]:
+) -> tuple[dict[str, Any], list[str]]:
     """
     Process user data with validation and formatting.
 
     Parameters
     ----------
-    user_data : Dict[str, Any]
+    user_data : dict[str, Any]
         Raw user data dictionary
-    validation_rules : List[str]
+    validation_rules : list[str]
         List of validation rules to apply
     output_format : str, default="json"
         Output format ("json", "xml", "yaml")
@@ -249,7 +249,7 @@ def process_user_data(
 
     Returns
     -------
-    Tuple[Dict[str, Any], List[str]]
+    tuple[dict[str, Any], list[str]]
         Processed data and list of validation errors
 
     Examples
@@ -265,17 +265,17 @@ def process_user_data(
 
 # 2. Immutable Operations
 def calculate_user_score(
-    user_metrics: Dict[str, float],
-    weights: Dict[str, float]
+    user_metrics: dict[str, float],
+    weights: dict[str, float]
 ) -> float:
     """
     Calculate user score without modifying input data.
 
     Parameters
     ----------
-    user_metrics : Dict[str, float]
+    user_metrics : dict[str, float]
         User performance metrics
-    weights : Dict[str, float]
+    weights : dict[str, float]
         Weights for each metric
 
     Returns
@@ -299,13 +299,13 @@ class ValidationError(UserDataError):
     """Raised when user data validation fails."""
     pass
 
-def validate_user_data(data: Dict[str, Any]) -> None:
+def validate_user_data(data: dict[str, Any]) -> None:
     """
     Validate user data dictionary.
 
     Parameters
     ----------
-    data : Dict[str, Any]
+    data : dict[str, Any]
         User data to validate
 
     Raises
@@ -414,7 +414,7 @@ def authenticate_user(
     email: str,
     password: str,
     remember_me: bool = False
-) -> Tuple[Optional[str], Dict[str, Any]]:
+) -> tuple[Optional[str], dict[str, Any]]:
     """
     Authenticate user with email and password.
 
@@ -433,7 +433,7 @@ def authenticate_user(
 
     Returns
     -------
-    Tuple[Optional[str], Dict[str, Any]]
+    tuple[Optional[str], dict[str, Any]]
         Authentication token (if successful) and user data dictionary
 
     Raises
@@ -514,12 +514,12 @@ make auto-fix-workflow
 
 ```python
 # Use specific types instead of generic ones
-from typing import Dict, List, Optional, Union, Literal, TypeVar, Generic
+from typing import Optional, Union, Literal, TypeVar, Generic
 
 # Good: Specific types
 UserID = str
-UserData = Dict[str, Union[str, int, bool]]
-ValidationResult = Tuple[bool, List[str]]
+UserData = dict[str, Union[str, int, bool]]
+ValidationResult = tuple[bool, list[str]]
 
 # Better: Generic types for reusability
 T = TypeVar('T')
@@ -638,13 +638,13 @@ class TestClassName:
     ({"name": "John", "age": -1}, False),
     ({}, False),
 ])
-def test_data_validation(input_data: Dict[str, Any], expected: bool) -> None:
+def test_data_validation(input_data: dict[str, Any], expected: bool) -> None:
     """
     Test data validation with various inputs.
 
     Parameters
     ----------
-    input_data : Dict[str, Any]
+    input_data : dict[str, Any]
         Input data to validate
     expected : bool
         Expected validation result

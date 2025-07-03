@@ -15,10 +15,10 @@ import re
 import subprocess
 import sys
 from pathlib import Path
-from typing import Dict, Any
+from typing import Any
 
 
-def get_user_input() -> Dict[str, str]:
+def get_user_input() -> dict[str, str]:
     """Collect project information from user."""
     print("🚀 Setting up your new Cursor AI Python project!")
     print("Please provide the following information:\n")
@@ -57,7 +57,7 @@ def get_user_input() -> Dict[str, str]:
     return project_info
 
 
-def update_pyproject_toml(project_info: Dict[str, str]) -> None:
+def update_pyproject_toml(project_info: dict[str, str]) -> None:
     """Update pyproject.toml with project information."""
     print("\n📝 Updating pyproject.toml...")
 
@@ -83,7 +83,7 @@ def update_pyproject_toml(project_info: Dict[str, str]) -> None:
     print("✅ Updated pyproject.toml")
 
 
-def update_init_py(project_info: Dict[str, str]) -> None:
+def update_init_py(project_info: dict[str, str]) -> None:
     """Update src/__init__.py with project information."""
     print("📝 Updating src/__init__.py...")
 
@@ -115,7 +115,7 @@ def remove_example_code() -> None:
         print("✅ Removed tests/test_calculator.py")
 
 
-def create_initial_module(project_info: Dict[str, str]) -> None:
+def create_initial_module(project_info: dict[str, str]) -> None:
     """Create initial module and test files."""
     print("📄 Creating initial module...")
 
@@ -247,7 +247,7 @@ def run_initial_setup() -> None:
         print("You may need to run 'make setup-env' and activate the virtual environment first")
 
 
-def commit_changes(project_info: Dict[str, str]) -> None:
+def commit_changes(project_info: dict[str, str]) -> None:
     """Commit the initial changes."""
     print("\n📦 Committing changes...")
 

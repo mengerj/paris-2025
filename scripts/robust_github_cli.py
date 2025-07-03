@@ -11,7 +11,7 @@ import json
 import os
 import subprocess
 import sys
-from typing import Dict, List, Optional, Any, Union
+from typing import Optional, Any, Union
 import requests
 from pathlib import Path
 
@@ -56,7 +56,7 @@ class RobustGitHubCLI:
         # Fallback to environment variable
         return os.environ.get('GITHUB_TOKEN')
 
-    def _get_repo_info(self) -> Optional[Dict[str, str]]:
+    def _get_repo_info(self) -> Optional[dict[str, str]]:
         """Get repository information."""
         try:
             result = subprocess.run(
@@ -83,7 +83,7 @@ class RobustGitHubCLI:
             pass
         return None
 
-    def run_gh_command(self, args: List[str], fallback_to_api: bool = True) -> Optional[Dict[str, Any]]:
+    def run_gh_command(self, args: list[str], fallback_to_api: bool = True) -> Optional[dict[str, Any]]:
         """Run GitHub CLI command with robust error handling."""
         try:
             # Try GitHub CLI first
@@ -112,7 +112,7 @@ class RobustGitHubCLI:
 
         return None
 
-    def _api_fallback(self, gh_args: List[str]) -> Optional[Dict[str, Any]]:
+    def _api_fallback(self, gh_args: list[str]) -> Optional[dict[str, Any]]:
         """Fallback to direct GitHub API calls."""
         if not self.repo_info:
             return None
@@ -136,28 +136,28 @@ class RobustGitHubCLI:
 
         return None
 
-    def _get_workflow_runs(self, headers: Dict[str, str]) -> Optional[Dict[str, Any]]:
+    def _get_workflow_runs(self, headers: dict[str, str]) -> Optional[dict[str, Any]]:
         """Get workflow runs via API."""
         url = f"https://api.github.com/repos/{self.repo_info['full_name']}/actions/runs"
         response = requests.get(url, headers=headers, timeout=10)
         response.raise_for_status()
         return response.json()
 
-    def _get_pull_request(self, pr_number: str, headers: Dict[str, str]) -> Optional[Dict[str, Any]]:
+    def _get_pull_request(self, pr_number: str, headers: dict[str, str]) -> Optional[dict[str, Any]]:
         """Get pull request via API."""
         url = f"https://api.github.com/repos/{self.repo_info['full_name']}/pulls/{pr_number}"
         response = requests.get(url, headers=headers, timeout=10)
         response.raise_for_status()
         return response.json()
 
-    def _get_issues(self, headers: Dict[str, str]) -> Optional[Dict[str, Any]]:
+    def _get_issues(self, headers: dict[str, str]) -> Optional[dict[str, Any]]:
         """Get issues via API."""
         url = f"https://api.github.com/repos/{self.repo_info['full_name']}/issues"
         response = requests.get(url, headers=headers, timeout=10)
         response.raise_for_status()
         return response.json()
 
-    def get_workflow_status(self) -> Dict[str, Any]:
+    def get_workflow_status(self) -> dict[str, Any]:
         """Get comprehensive workflow status."""
         print("🔍 Checking workflow status...")
 
@@ -194,7 +194,7 @@ class RobustGitHubCLI:
 
         return status_summary
 
-    def get_pr_status(self, pr_number: str) -> Dict[str, Any]:
+    def get_pr_status(self, pr_number: str) -> dict[str, Any]:
         """Get pull request status with check details."""
         print(f"🔍 Checking PR #{pr_number} status...")
 
@@ -222,7 +222,7 @@ class RobustGitHubCLI:
             'is_mergeable': pr_data.get('mergeable') == 'MERGEABLE'
         }
 
-    def diagnose_failure(self, run_info: Dict[str, Any]) -> Dict[str, Any]:
+    def diagnose_failure(self, run_info: dict[str, Any]) -> dict[str, Any]:
         """Diagnose workflow failure based on available information."""
         workflow_name = run_info.get('workflowName', 'Unknown')
         duration = run_info.get('duration', 0)

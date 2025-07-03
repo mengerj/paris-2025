@@ -49,8 +49,21 @@ This template is specifically designed for:
 
 ### Prerequisites
 - Python 3.11 or higher
+- [uv](https://github.com/astral-sh/uv) - Fast Python package installer and resolver
 - Git
 - [GitHub CLI](https://cli.github.com/) (optional, for automated workflows)
+
+**Install uv:**
+```bash
+# macOS/Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Windows
+powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
+
+# Or via pip
+pip install uv
+```
 
 ### Setup
 ```bash
@@ -61,7 +74,7 @@ cd AI-dev-py-template
 
 # Set up development environment
 make setup-env
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+source .venv/bin/activate  # On Windows: .venv\Scripts\activate
 make install-dev
 
 # Verify setup
@@ -83,6 +96,64 @@ make format
 make ci
 ```
 
+## 📦 Package Management
+
+This template uses **uv** for fast and reliable package management:
+
+### Adding Dependencies
+
+**Production dependencies:**
+```bash
+# Add a new production dependency
+uv add "package-name>=1.0.0"
+
+# Add multiple packages
+uv add "requests>=2.31.0" "pydantic>=2.0.0"
+
+# Add with specific version
+uv add "fastapi==0.104.1"
+```
+
+**Development dependencies:**
+```bash
+# Add development-only dependencies
+uv add --dev "pytest-mock>=3.0.0"
+uv add --dev "black>=23.0.0" "isort>=5.12.0"
+```
+
+### Managing Dependencies
+
+```bash
+# Update all dependencies
+uv lock
+
+# Sync environment with lockfile
+uv sync
+
+# Install from requirements
+uv pip install -r requirements.txt
+
+# Export current dependencies
+uv pip freeze > requirements.txt
+```
+
+### Working with Virtual Environments
+
+```bash
+# Create virtual environment
+uv venv .venv
+
+# Activate virtual environment
+source .venv/bin/activate  # Linux/Mac
+.venv\Scripts\activate     # Windows
+
+# Install project in development mode
+uv pip install -e .
+
+# Install with development dependencies
+uv pip install -e .[dev]
+```
+
 ## 📋 Coding Standards for AI Development
 
 ### Type Hints Requirements
@@ -93,16 +164,16 @@ from typing import List, Dict, Optional, Union, Any
 from pathlib import Path
 
 def process_data(
-    data: List[Dict[str, Any]],
+    data: list[dict[str, Any]],
     output_path: Path,
     batch_size: Optional[int] = None
-) -> Dict[str, Union[int, str]]:
+) -> dict[str, Union[int, str]]:
     """
     Process data with type hints for AI understanding.
 
     Parameters
     ----------
-    data : List[Dict[str, Any]]
+    data : list[dict[str, Any]]
         Input data as list of dictionaries
     output_path : Path
         Path to output file
@@ -111,7 +182,7 @@ def process_data(
 
     Returns
     -------
-    Dict[str, Union[int, str]]
+    dict[str, Union[int, str]]
         Processing results with statistics
     """
     # Implementation with full type safety
@@ -126,7 +197,7 @@ def calculate_metrics(
     predictions: np.ndarray,
     targets: np.ndarray,
     weights: Optional[np.ndarray] = None
-) -> Dict[str, float]:
+) -> dict[str, float]:
     """
     Calculate evaluation metrics for model predictions.
 
@@ -141,7 +212,7 @@ def calculate_metrics(
 
     Returns
     -------
-    Dict[str, float]
+    dict[str, float]
         Dictionary containing:
         - 'accuracy': Overall accuracy score
         - 'precision': Precision score
@@ -178,18 +249,18 @@ class DataProcessor:
 
     Parameters
     ----------
-    config : Dict[str, Any]
+    config : dict[str, Any]
         Configuration dictionary with processing parameters
     verbose : bool, default=False
         Whether to print processing information
 
     Attributes
     ----------
-    config : Dict[str, Any]
+    config : dict[str, Any]
         Processing configuration
     is_fitted : bool
         Whether the processor has been fitted to data
-    feature_names : List[str]
+    feature_names : list[str]
         Names of processed features
 
     Examples
@@ -199,12 +270,12 @@ class DataProcessor:
     >>> processed_data = processor.fit_transform(raw_data)
     """
 
-    def __init__(self, config: Dict[str, Any], verbose: bool = False) -> None:
+    def __init__(self, config: dict[str, Any], verbose: bool = False) -> None:
         """Initialize the data processor."""
         self.config = config
         self.verbose = verbose
         self.is_fitted = False
-        self.feature_names: List[str] = []
+        self.feature_names: list[str] = []
 ```
 
 ### Error Handling
@@ -219,13 +290,13 @@ class InvalidConfigurationError(DataProcessingError):
     """Raised when configuration is invalid."""
     pass
 
-def validate_config(config: Dict[str, Any]) -> None:
+def validate_config(config: dict[str, Any]) -> None:
     """
     Validate configuration parameters.
 
     Parameters
     ----------
-    config : Dict[str, Any]
+    config : dict[str, Any]
         Configuration to validate
 
     Raises
@@ -331,13 +402,19 @@ The template includes automated workflows for:
 | `make test-watch` | Run tests in watch mode |
 | `make ci` | Run full CI pipeline locally |
 
-### Code Quality
+### Code Quality (Development - Auto-fix)
 | Command | Description |
 |---------|-------------|
-| `make format` | Format code (black + isort) |
+| `make format` | Format code (black + isort) - **AUTO-FIX** |
 | `make lint` | Run linting (flake8) |
 | `make type-check` | Run type checking (mypy) |
 | `make security-check` | Run security scanning (bandit) |
+
+### CI Quality Checks (Check-only mode)
+| Command | Description |
+|---------|-------------|
+| `make format-check` | Check code formatting - **NO AUTO-FIX** |
+| `make ci` | Run full CI pipeline (check-only mode) |
 
 ### Workflow Management
 | Command | Description |
@@ -352,6 +429,30 @@ The template includes automated workflows for:
 |---------|-------------|
 | `make setup-template` | Interactive template setup |
 | `make setup-template-clean` | Setup with example removal |
+
+## 🔄 Development vs CI Workflow
+
+This template separates **development** (auto-fix) and **CI** (check-only) workflows:
+
+### Development Mode (Auto-fix)
+```bash
+# Automatically fix formatting and imports
+make format          # Fixes code style issues
+make lint            # Reports linting issues
+make type-check      # Reports type issues
+```
+
+### CI Mode (Check-only)
+```bash
+# Check without modifying files (GitHub CI behavior)
+make format-check    # Fails if formatting is needed
+make ci              # Runs all checks in check-only mode
+```
+
+**Why separate modes?**
+- **Development**: Helps you by auto-fixing issues as you work
+- **CI**: Ensures code quality without modifying files in version control
+- **Consistency**: Your local `make ci` matches exactly what GitHub CI runs
 
 ## 🔧 Configuration Details
 

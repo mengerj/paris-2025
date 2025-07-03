@@ -205,25 +205,25 @@ from typing import Optional, Dict, Any, List
 from pathlib import Path
 
 def process_user_data(
-    user_data: Dict[str, Any],
-    validation_rules: List[str],
+    user_data: dict[str, Any],
+    validation_rules: list[str],
     output_path: Optional[Path] = None
-) -> Dict[str, Any]:
+) -> dict[str, Any]:
     """
     Process user data with comprehensive validation.
 
     Parameters
     ----------
-    user_data : Dict[str, Any]
+    user_data : dict[str, Any]
         Raw user data to process
-    validation_rules : List[str]
+    validation_rules : list[str]
         List of validation rules to apply
     output_path : Optional[Path], default=None
         Path to save processed data
 
     Returns
     -------
-    Dict[str, Any]
+    dict[str, Any]
         Processed and validated user data
     """
     # Implementation here
@@ -326,12 +326,12 @@ class YourClass:
 
     Parameters
     ----------
-    config : Dict[str, Any]
+    config : dict[str, Any]
         Configuration dictionary
 
     Attributes
     ----------
-    config : Dict[str, Any]
+    config : dict[str, Any]
         Configuration settings
 
     Examples
@@ -340,7 +340,7 @@ class YourClass:
     >>> result = your_class.process_data(data)
     """
 
-    def __init__(self, config: Dict[str, Any]) -> None:
+    def __init__(self, config: dict[str, Any]) -> None:
         """Initialize with configuration."""
         self.config = config
 ```

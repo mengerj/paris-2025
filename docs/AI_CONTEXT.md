@@ -101,8 +101,7 @@ addopts = [
 ```python
 # Required imports for type hints
 from typing import (
-    Dict, List, Optional, Union, Any, Tuple, Set,
-    Callable, TypeVar, Generic, Protocol, Literal
+    Optional, Union, Any, Callable, TypeVar, Generic, Protocol, Literal
 )
 from pathlib import Path
 from datetime import datetime
@@ -117,7 +116,7 @@ OutputFormat = Literal["json", "xml", "yaml", "csv"]
 class Serializable(Protocol):
     """Protocol for serializable objects."""
 
-    def serialize(self) -> Dict[str, Any]:
+    def serialize(self) -> dict[str, Any]:
         """Serialize object to dictionary."""
         ...
 
@@ -137,28 +136,28 @@ class UserData:
 
 ```python
 def calculate_user_metrics(
-    user_data: List[Dict[str, Any]],
-    metric_types: List[str],
-    weights: Optional[Dict[str, float]] = None,
+    user_data: list[dict[str, Any]],
+    metric_types: list[str],
+    weights: Optional[dict[str, float]] = None,
     normalize: bool = True
-) -> Tuple[Dict[str, float], List[str]]:
+) -> tuple[dict[str, float], list[str]]:
     """
     Calculate comprehensive user metrics with weighted scoring.
 
     Parameters
     ----------
-    user_data : List[Dict[str, Any]]
+    user_data : list[dict[str, Any]]
         List of user data dictionaries containing user information
-    metric_types : List[str]
+    metric_types : list[str]
         List of metric types to calculate
-    weights : Optional[Dict[str, float]], default=None
+    weights : Optional[dict[str, float]], default=None
         Optional weights for each metric type
     normalize : bool, default=True
         Whether to normalize metrics to 0-1 range
 
     Returns
     -------
-    Tuple[Dict[str, float], List[str]]
+    tuple[dict[str, float], list[str]]
         Tuple containing calculated metrics and warnings
 
     Raises

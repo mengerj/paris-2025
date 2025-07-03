@@ -9,7 +9,7 @@ and can automatically suggest or make adjustments based on failures.
 import json
 import subprocess
 import sys
-from typing import Dict, List, Optional, Any
+from typing import Optional, Any
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -37,7 +37,7 @@ class WorkflowJob:
     status: str
     conclusion: Optional[str]
     html_url: str
-    steps: List[Dict[str, Any]]
+    steps: list[dict[str, Any]]
 
 
 class WorkflowChecker:
@@ -66,7 +66,7 @@ class WorkflowChecker:
         except subprocess.CalledProcessError as e:
             raise RuntimeError(f"Failed to get repository URL: {e}")
 
-    def get_workflow_runs(self, limit: int = 10) -> List[WorkflowRun]:
+    def get_workflow_runs(self, limit: int = 10) -> list[WorkflowRun]:
         """Get recent workflow runs."""
         try:
             result = subprocess.run([
@@ -99,7 +99,7 @@ class WorkflowChecker:
             print(f"Error parsing workflow runs JSON: {e}")
             return []
 
-    def get_workflow_jobs(self, run_id: str) -> List[WorkflowJob]:
+    def get_workflow_jobs(self, run_id: str) -> list[WorkflowJob]:
         """Get jobs for a specific workflow run."""
         try:
             result = subprocess.run([
@@ -129,7 +129,7 @@ class WorkflowChecker:
             print(f"Error parsing workflow jobs JSON: {e}")
             return []
 
-    def get_failed_steps(self, run_id: str) -> List[Dict[str, Any]]:
+    def get_failed_steps(self, run_id: str) -> list[dict[str, Any]]:
         """Get failed steps from a workflow run."""
         failed_steps = []
         jobs = self.get_workflow_jobs(run_id)
@@ -148,7 +148,7 @@ class WorkflowChecker:
 
         return failed_steps
 
-    def analyze_failures(self, branch: Optional[str] = None) -> Dict[str, Any]:
+    def analyze_failures(self, branch: Optional[str] = None) -> dict[str, Any]:
         """Analyze workflow failures for a specific branch or latest runs."""
         runs = self.get_workflow_runs()
 
@@ -174,7 +174,7 @@ class WorkflowChecker:
 
         return analysis
 
-    def suggest_fixes(self, analysis: Dict[str, Any]) -> List[str]:
+    def suggest_fixes(self, analysis: dict[str, Any]) -> list[str]:
         """Suggest fixes based on workflow analysis."""
         suggestions = []
 

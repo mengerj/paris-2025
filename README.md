@@ -1,36 +1,63 @@
-# 🚀 Paris 2025 - Cursor AI Development Showcase
+# 🤖 AI-dev-py-template
 
-A comprehensive Python development environment optimized for Cursor AI agents, featuring automated workflows, quality assurance, and best practices.
+**A comprehensive Python development template optimized for AI-assisted development (Cursor, GitHub Copilot, etc.)**
 
-[![CI](https://github.com/mengerj/paris-2025/actions/workflows/ci.yml/badge.svg)](https://github.com/mengerj/paris-2025/actions/workflows/ci.yml)
-[![codecov](https://codecov.io/gh/mengerj/paris-2025/branch/main/graph/badge.svg)](https://codecov.io/gh/mengerj/paris-2025)
+This repository serves as a production-ready template for Python projects that leverage AI assistance for development. It provides a complete development environment with automated workflows, quality assurance, and AI-friendly coding standards.
+
+[![CI](https://github.com/mengerj/AI-dev-py-template/actions/workflows/ci.yml/badge.svg)](https://github.com/mengerj/AI-dev-py-template/actions/workflows/ci.yml)
+[![codecov](https://codecov.io/gh/mengerj/AI-dev-py-template/branch/main/graph/badge.svg)](https://codecov.io/gh/mengerj/AI-dev-py-template)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 
+## 🎯 Purpose
+
+This template is specifically designed for:
+- **AI-Assisted Development**: Optimized for Cursor, GitHub Copilot, and other AI coding assistants
+- **Production-Ready Code**: Comprehensive quality assurance and testing
+- **Developer Experience**: Zero-friction setup and automated workflows
+- **Best Practices**: Modern Python development standards
+
 ## ✨ Features
 
-- 🤖 **Cursor AI Optimized**: Tailored for AI-assisted development
-- 🧪 **Test-Driven Development**: Comprehensive testing setup with pytest
-- 🔄 **Automated Workflows**: GitHub Actions for CI/CD, formatting, and security
-- 📦 **Modern Python**: Python 3.11+ with strict type checking
-- 🏗️ **Clean Architecture**: Scalable structure with separation of concerns
-- 📊 **Quality Assurance**: Linting, formatting, and security scanning
-- 🚀 **Zero-Friction Setup**: One-command environment setup
+### 🤖 AI-Optimized Development
+- **Comprehensive Type Hints**: Full type annotations for better AI understanding
+- **Numpy-Style Docstrings**: Detailed, structured documentation for AI context
+- **Clean Architecture**: Clear separation of concerns and patterns
+- **AI-Friendly Structure**: Logical project organization for AI comprehension
+
+### 🔧 Development Environment
+- **Python 3.11+**: Modern Python with latest features
+- **Virtual Environment**: Isolated dependencies
+- **One-Command Setup**: `make setup-env` for instant development
+- **Pre-commit Hooks**: Automated quality checks on commit
+
+### 📊 Quality Assurance
+- **Black Formatting**: 88-character line length, consistent style
+- **isort Import Sorting**: Organized imports with Black compatibility
+- **flake8 Linting**: Code quality enforcement
+- **mypy Type Checking**: Strict type checking for better AI assistance
+- **bandit Security**: Security vulnerability scanning
+- **pytest Testing**: Comprehensive test framework with 80%+ coverage
+
+### 🚀 Automated Workflows
+- **GitHub Actions CI/CD**: Multi-version testing and quality checks
+- **Auto-formatting**: Weekly automated code formatting
+- **Auto-fix**: Automatic resolution of common CI failures
+- **Workflow Monitoring**: Real-time status and failure analysis
 
 ## 🚀 Quick Start
 
 ### Prerequisites
-
 - Python 3.11 or higher
 - Git
 - [GitHub CLI](https://cli.github.com/) (optional, for automated workflows)
 
 ### Setup
-
 ```bash
-# Clone the repository
-git clone https://github.com/mengerj/paris-2025.git
-cd paris-2025
+# Use this template to create a new repository
+# Or clone directly:
+git clone https://github.com/mengerj/AI-dev-py-template.git
+cd AI-dev-py-template
 
 # Set up development environment
 make setup-env
@@ -41,145 +68,260 @@ make install-dev
 make ci
 ```
 
-### First Steps
-
+### First Development Steps
 ```bash
 # View available commands
 make help
 
-# Run tests
-make test
+# Start developing with TDD
+make test-watch
 
 # Format code
 make format
 
 # Run full quality checks
 make ci
+```
 
-# Create a new feature branch from an issue
-make branch-from-issue
+## 📋 Coding Standards for AI Development
+
+### Type Hints Requirements
+All code must include comprehensive type hints:
+
+```python
+from typing import List, Dict, Optional, Union, Any
+from pathlib import Path
+
+def process_data(
+    data: List[Dict[str, Any]],
+    output_path: Path,
+    batch_size: Optional[int] = None
+) -> Dict[str, Union[int, str]]:
+    """
+    Process data with type hints for AI understanding.
+
+    Parameters
+    ----------
+    data : List[Dict[str, Any]]
+        Input data as list of dictionaries
+    output_path : Path
+        Path to output file
+    batch_size : Optional[int], default=None
+        Processing batch size
+
+    Returns
+    -------
+    Dict[str, Union[int, str]]
+        Processing results with statistics
+    """
+    # Implementation with full type safety
+    pass
+```
+
+### Numpy-Style Docstrings
+All functions and classes must use numpy-style docstrings:
+
+```python
+def calculate_metrics(
+    predictions: np.ndarray,
+    targets: np.ndarray,
+    weights: Optional[np.ndarray] = None
+) -> Dict[str, float]:
+    """
+    Calculate evaluation metrics for model predictions.
+
+    Parameters
+    ----------
+    predictions : np.ndarray
+        Model predictions, shape (n_samples, n_classes)
+    targets : np.ndarray
+        Ground truth labels, shape (n_samples,)
+    weights : Optional[np.ndarray], default=None
+        Sample weights, shape (n_samples,)
+
+    Returns
+    -------
+    Dict[str, float]
+        Dictionary containing:
+        - 'accuracy': Overall accuracy score
+        - 'precision': Precision score
+        - 'recall': Recall score
+        - 'f1': F1 score
+
+    Raises
+    ------
+    ValueError
+        If predictions and targets have incompatible shapes
+
+    Examples
+    --------
+    >>> predictions = np.array([[0.9, 0.1], [0.3, 0.7]])
+    >>> targets = np.array([0, 1])
+    >>> metrics = calculate_metrics(predictions, targets)
+    >>> metrics['accuracy']
+    1.0
+    """
+    # Implementation here
+    pass
+```
+
+### Class Documentation
+Classes must include comprehensive docstrings:
+
+```python
+class DataProcessor:
+    """
+    Process and transform data for machine learning pipelines.
+
+    This class handles data cleaning, feature engineering, and preprocessing
+    with support for various data formats and transformations.
+
+    Parameters
+    ----------
+    config : Dict[str, Any]
+        Configuration dictionary with processing parameters
+    verbose : bool, default=False
+        Whether to print processing information
+
+    Attributes
+    ----------
+    config : Dict[str, Any]
+        Processing configuration
+    is_fitted : bool
+        Whether the processor has been fitted to data
+    feature_names : List[str]
+        Names of processed features
+
+    Examples
+    --------
+    >>> config = {'normalize': True, 'handle_missing': 'mean'}
+    >>> processor = DataProcessor(config)
+    >>> processed_data = processor.fit_transform(raw_data)
+    """
+
+    def __init__(self, config: Dict[str, Any], verbose: bool = False) -> None:
+        """Initialize the data processor."""
+        self.config = config
+        self.verbose = verbose
+        self.is_fitted = False
+        self.feature_names: List[str] = []
+```
+
+### Error Handling
+Proper exception handling with custom exceptions:
+
+```python
+class DataProcessingError(Exception):
+    """Raised when data processing fails."""
+    pass
+
+class InvalidConfigurationError(DataProcessingError):
+    """Raised when configuration is invalid."""
+    pass
+
+def validate_config(config: Dict[str, Any]) -> None:
+    """
+    Validate configuration parameters.
+
+    Parameters
+    ----------
+    config : Dict[str, Any]
+        Configuration to validate
+
+    Raises
+    ------
+    InvalidConfigurationError
+        If configuration is invalid
+    """
+    required_keys = ['input_format', 'output_format']
+    for key in required_keys:
+        if key not in config:
+            raise InvalidConfigurationError(f"Missing required key: {key}")
 ```
 
 ## 🏗️ Project Structure
 
 ```
-paris-2025/
-├── src/                    # Source code
-│   ├── __init__.py
-│   └── calculator.py       # Example module with clean architecture
-├── tests/                  # Test files
-│   ├── __init__.py
-│   └── test_calculator.py  # Comprehensive test examples
-├── docs/                   # Documentation
-│   └── DEVELOPMENT_WORKFLOW.md
-├── .github/                # GitHub workflows and templates
+AI-dev-py-template/
+├── src/                          # Source code
+│   ├── __init__.py              # Package initialization
+│   └── calculator.py            # Example module with clean architecture
+├── tests/                       # Test files
+│   ├── __init__.py             # Test package initialization
+│   └── test_calculator.py      # Comprehensive test examples
+├── docs/                        # Documentation
+│   ├── DEVELOPMENT_WORKFLOW.md # Development process
+│   ├── WORKFLOW_MONITORING.md  # Workflow monitoring guide
+│   └── AI_CONTEXT.md           # AI development context
+├── scripts/                     # Automation scripts
+│   ├── check_workflows.py      # Workflow analysis
+│   ├── auto_fix_workflow.py    # Automatic fixes
+│   └── setup_template.py       # Template setup
+├── .github/                     # GitHub workflows and templates
 │   ├── workflows/
-│   │   ├── ci.yml         # Main CI pipeline
-│   │   └── auto-format.yml # Automated formatting
-│   ├── ISSUE_TEMPLATE/    # Issue templates
+│   │   ├── ci.yml              # Main CI pipeline
+│   │   ├── auto-format.yml     # Automated formatting
+│   │   └── auto-fix.yml        # Automatic workflow fixes
+│   ├── ISSUE_TEMPLATE/         # Issue templates
 │   └── PULL_REQUEST_TEMPLATE.md
-├── .vscode/               # Cursor/VS Code settings
-│   ├── settings.json      # Optimized for AI development
-│   └── launch.json        # Debug configurations
-├── pyproject.toml         # Project configuration
-├── Makefile              # Development commands
-├── .pre-commit-config.yaml # Git hooks
-└── requirements-dev.txt   # Development dependencies
+├── .vscode/                     # VS Code/Cursor settings
+│   ├── settings.json           # Editor configuration
+│   └── launch.json             # Debug configurations
+├── pyproject.toml              # Project configuration
+├── Makefile                    # Development commands
+├── .pre-commit-config.yaml     # Git hooks
+├── .flake8                     # Linting configuration
+├── requirements.txt            # Production dependencies
+└── requirements-dev.txt        # Development dependencies
 ```
 
-## 🤖 Cursor AI Integration
+## 🤖 AI Development Workflow
 
-This project is specifically designed to work seamlessly with Cursor AI:
-
-### Key Features for AI Development
-
-- 📝 **Comprehensive Type Hints**: All code includes type hints for better AI understanding
-- 📚 **Detailed Docstrings**: Google-style docstrings with examples
-- 🧪 **TDD-Ready**: Test structure optimized for AI-generated tests
-- 🏗️ **Clean Architecture**: Clear separation of concerns for AI comprehension
-- ⚙️ **Automated Workflows**: One-command operations for common tasks
-
-### Cursor-Optimized Commands
+### 1. Test-Driven Development with AI
 
 ```bash
-# AI-friendly development workflow
-make test-watch      # Continuous testing during development
-make branch-from-issue  # Create branch from GitHub issue
-make issue          # Create new issue interactively
-make pr            # Create pull request with auto-generated description
-```
-
-### AI Prompting Examples
-
-```python
-# For Cursor AI: "Create a test for email validation with comprehensive edge cases"
-def test_email_validation():
-    validator = EmailValidator()
-    assert validator.is_valid("user@example.com") is True
-    assert validator.is_valid("invalid-email") is False
-
-# For Cursor AI: "Implement EmailValidator following clean architecture principles"
-```
-
-## 🧪 Development Workflow
-
-### Test-Driven Development
-
-1. **Write Tests First** (Red)
-   ```bash
-   # Create test file
-   touch tests/test_new_feature.py
-   make test  # Should fail
-   ```
-
-2. **Implement Minimal Code** (Green)
-   ```bash
-   # Write minimal implementation
-   make test  # Should pass
-   ```
-
-3. **Refactor** (Refactor)
-   ```bash
-   # Improve code quality
-   make ci    # Ensure all checks pass
-   ```
-
-### Quality Assurance
-
-All code is automatically checked for:
-
-- **Formatting**: Black (88 char line length)
-- **Import Sorting**: isort
-- **Linting**: flake8
-- **Type Checking**: mypy (strict mode)
-- **Security**: bandit
-- **Test Coverage**: pytest-cov (80%+ target)
-
-### Git Workflow
-
-```bash
-# Create feature branch from issue
-make branch-from-issue
-
-# Make changes with TDD approach
+# Start with AI-generated tests
 make test-watch
 
-# Quality check before commit
+# Use AI prompts like:
+# "Write comprehensive tests for email validation with edge cases"
+# "Generate parametrized tests for the calculator module"
+# "Create integration tests for the data processing pipeline"
+```
+
+### 2. Implementation with AI Assistance
+
+```python
+# Example AI prompts for implementation:
+# "Implement EmailValidator following clean architecture principles"
+# "Create a data processing class with proper error handling"
+# "Add logging and monitoring to the existing function"
+```
+
+### 3. Quality Assurance
+
+```bash
+# Run all quality checks
 make ci
 
-# Commit and push
-git add .
-git commit -m "feat: implement new feature"
-git push origin feature/your-branch
+# Auto-fix common issues
+make auto-fix
 
-# Create pull request
-make pr
+# Check workflow status
+make workflow-status
 ```
+
+### 4. Automated Workflows
+
+The template includes automated workflows for:
+- **CI/CD**: Continuous integration with multi-version testing
+- **Auto-formatting**: Weekly automated code formatting PRs
+- **Auto-fix**: Automatic resolution of common CI failures
+- **Monitoring**: Real-time workflow status and failure analysis
 
 ## 📋 Available Commands
 
-### Development Commands
-
+### Core Development
 | Command | Description |
 |---------|-------------|
 | `make help` | Show all available commands |
@@ -187,107 +329,103 @@ make pr
 | `make install-dev` | Install development dependencies |
 | `make test` | Run tests with coverage |
 | `make test-watch` | Run tests in watch mode |
-| `make lint` | Run linting (flake8) |
-| `make format` | Format code (black + isort) |
-| `make type-check` | Run type checking (mypy) |
 | `make ci` | Run full CI pipeline locally |
-| `make clean` | Clean build artifacts |
 
-### Workflow Commands
-
+### Code Quality
 | Command | Description |
 |---------|-------------|
-| `make issue` | Create new GitHub issue |
-| `make pr` | Create pull request |
-| `make branch-from-issue` | Create branch from GitHub issue |
-| `make workflow-status` | Check current workflow status |
-| `make check-workflows` | Analyze workflow failures with suggestions |
-| `make auto-fix` | Automatically fix workflow failures |
-| `make auto-fix-push` | Auto-fix and push changes |
+| `make format` | Format code (black + isort) |
+| `make lint` | Run linting (flake8) |
+| `make type-check` | Run type checking (mypy) |
+| `make security-check` | Run security scanning (bandit) |
 
-## 🔧 Configuration
+### Workflow Management
+| Command | Description |
+|---------|-------------|
+| `make workflow-status` | Check GitHub workflow status |
+| `make check-workflows` | Analyze workflow failures |
+| `make auto-fix` | Automatically fix common issues |
+| `make auto-fix-push` | Fix issues and push changes |
 
-### Tool Configuration
+### Template Management
+| Command | Description |
+|---------|-------------|
+| `make setup-template` | Interactive template setup |
+| `make setup-template-clean` | Setup with example removal |
 
-All tools are configured in `pyproject.toml`:
+## 🔧 Configuration Details
 
-- **Black**: 88-character line length, Python 3.11 target
-- **isort**: Black-compatible profile
-- **mypy**: Strict type checking with comprehensive warnings
-- **pytest**: Comprehensive coverage reporting
-- **flake8**: Black-compatible linting
+### Code Formatting (Black)
+- **Line Length**: 88 characters
+- **Target Version**: Python 3.11+
+- **String Normalization**: Enabled
+- **Magic Trailing Comma**: Enabled
 
-### Cursor/VS Code Settings
+### Import Sorting (isort)
+- **Profile**: Black compatibility
+- **Line Length**: 88 characters
+- **Multi-line Output**: Mode 3 (Vertical Hanging Indent)
+- **Force Single Line**: False
 
-Optimized settings in `.vscode/settings.json`:
+### Linting (flake8)
+- **Max Line Length**: 88 characters
+- **Ignored Errors**: E203 (whitespace before ':'), W503 (line break before binary operator)
+- **Excluded Directories**: .git, __pycache__, .venv, build, dist
 
-- Python interpreter path
-- Automatic formatting on save
-- Type checking enabled
-- Test discovery configured
-- File exclusions for cleaner workspace
+### Type Checking (mypy)
+- **Strict Mode**: Enabled
+- **Disallow Untyped Defs**: True
+- **Warn Return Any**: True
+- **No Implicit Optional**: True
 
-## 🚀 GitHub Actions
+### Testing (pytest)
+- **Coverage Target**: 80%+
+- **Test Discovery**: Automatic
+- **Reports**: HTML + Terminal
+- **Strict Config**: Enabled
 
-### Continuous Integration (`ci.yml`)
+## 📚 Documentation for AI Context
 
-- **Multi-Python Testing**: Python 3.11 and 3.12
-- **Comprehensive Checks**: Linting, formatting, type checking, tests
-- **Security Scanning**: Bandit and Safety checks
-- **Coverage Reporting**: Codecov integration
+This template includes comprehensive documentation designed to provide AI models with complete context:
 
-### Auto-Formatting (`auto-format.yml`)
+### Key Documentation Files
+- **README.md**: This file - comprehensive project overview
+- **TEMPLATE_SETUP.md**: Template usage and customization guide
+- **docs/AI_CONTEXT.md**: Detailed AI development context
+- **docs/DEVELOPMENT_WORKFLOW.md**: Development process and workflows
+- **docs/WORKFLOW_MONITORING.md**: Automated workflow monitoring
 
-- **Automatic PRs**: Creates PRs for formatting fixes
-- **Scheduled Runs**: Weekly maintenance
-- **Zero Configuration**: Works out of the box
+### AI-Friendly Features
+- **Complete Type Annotations**: Every function and class has full type hints
+- **Numpy-Style Docstrings**: Structured documentation with examples
+- **Clean Architecture**: Clear separation of concerns and patterns
+- **Comprehensive Examples**: Working code examples for AI to learn from
 
-## 📊 Code Quality Metrics
+## 🚀 Using as a Template
 
-- **Test Coverage**: 80%+ target with HTML reports
-- **Type Coverage**: 100% for public APIs
-- **Security**: Automated vulnerability scanning
-- **Performance**: Benchmark tests for critical paths
+### Creating a New Project
+1. **Use GitHub Template**: Click "Use this template" on GitHub
+2. **Or Clone Directly**: `git clone https://github.com/mengerj/AI-dev-py-template.git`
+3. **Run Template Setup**: `make setup-template`
+4. **Start Development**: `make test-watch`
+
+### Customization
+The template includes an interactive setup script that:
+- Updates project metadata
+- Customizes package names
+- Removes or keeps example code
+- Configures development environment
+
+See `TEMPLATE_SETUP.md` for detailed instructions.
 
 ## 🤝 Contributing
 
-1. **Create an Issue**: Use provided templates
-2. **Create Branch**: `make branch-from-issue`
-3. **Develop with TDD**: Write tests first
-4. **Quality Check**: `make ci`
-5. **Create PR**: `make pr`
+Contributions are welcome! Please read the development workflow documentation and ensure all quality checks pass:
 
-See [Development Workflow](docs/DEVELOPMENT_WORKFLOW.md) for detailed guidance.
-
-## 📖 Documentation
-
-- **[Development Workflow](docs/DEVELOPMENT_WORKFLOW.md)**: Comprehensive guide for Cursor AI development
-- **[Workflow Monitoring](docs/WORKFLOW_MONITORING.md)**: Auto-fix system for GitHub workflows
-- **API Documentation**: Auto-generated from docstrings
-- **Architecture Decisions**: Documented in code comments
-
-## 🛠️ Troubleshooting
-
-### Common Issues
-
-**Tests not running:**
 ```bash
-# Check Python path
-echo $PYTHONPATH
-# Reinstall dependencies
-make clean && make install-dev
-```
-
-**Pre-commit hooks failing:**
-```bash
-pre-commit autoupdate
-make pre-commit
-```
-
-**Type checking errors:**
-```bash
-# Install missing type stubs
-pip install types-requests types-PyYAML
+# Before submitting changes
+make ci
+make workflow-status
 ```
 
 ## 📄 License
@@ -296,9 +434,10 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- **Cursor AI** for enabling next-generation development workflows
-- **Python Community** for excellent tooling and best practices
-- **GitHub Actions** for seamless CI/CD integration
+- Optimized for [Cursor](https://cursor.sh/) AI IDE
+- Compatible with GitHub Copilot and other AI assistants
+- Built with modern Python development best practices
+- Inspired by the Python community's quality standards
 
 ---
 

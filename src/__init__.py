@@ -1,4 +1,7 @@
-"""Paris 2025 - A Cursor AI development showcase project."""
+"""
+AI-dev-py-template - Comprehensive Python development template optimized
+for AI-assisted development.
+"""
 
 __version__ = "0.1.0"
 __author__ = "mengerj"

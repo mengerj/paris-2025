@@ -1,1 +1,1 @@
-"""Test package for paris-2025."""
+"""Test package for AI-dev-py-template."""

@@ -1,6 +1,6 @@
-# 🚀 Template Setup Guide
+# 🤖 AI-dev-py-template Setup Guide
 
-Welcome to your new Cursor AI-optimized Python project! This template provides a complete development environment with automated workflows, quality assurance, and AI integration.
+Welcome to your new AI-assisted Python development project! This template provides a comprehensive development environment with automated workflows, quality assurance, and AI-friendly coding standards.
 
 ## ✅ Quick Start Checklist
 
@@ -22,6 +22,9 @@ authors = [
 Homepage = "https://github.com/yourusername/your-repo"  # ← Change this
 Repository = "https://github.com/yourusername/your-repo.git"  # ← Change this
 Issues = "https://github.com/yourusername/your-repo/issues"  # ← Change this
+
+[tool.isort]
+known_first_party = ["your_package_name"]  # ← Change this
 ```
 
 **Edit `README.md`:**
@@ -80,19 +83,26 @@ your-repo/
 - Go to your repository Settings → Actions → General
 - Allow all actions and reusable workflows
 
-**Set up branch protection (optional but recommended):**
+**Set up branch protection (recommended):**
 - Go to Settings → Branches
 - Add rule for `main` branch
 - Require status checks to pass before merging
 - Require pull request reviews
 
-### 5. 🤖 **Cursor AI Integration**
+### 5. 🤖 **AI-Assisted Development Setup**
 
 **Open in Cursor:**
 ```bash
 # If you have Cursor installed
 cursor .
 ```
+
+**Configure AI Development Environment:**
+The template includes optimized settings for AI-assisted development:
+- `.vscode/settings.json` - Editor configuration for AI tools
+- Comprehensive type hints for better AI understanding
+- Numpy-style docstrings for detailed AI context
+- Clean architecture patterns for AI comprehension
 
 **Start developing with AI assistance:**
 ```bash
@@ -102,10 +112,11 @@ make branch-from-issue
 # Develop with TDD
 make test-watch  # Keep this running while developing
 
-# Use Cursor to:
-# - "Write tests for [functionality]"
-# - "Implement [feature] following clean architecture"
-# - "Refactor this code for better readability"
+# Use AI to:
+# - "Write tests for [functionality] with numpy-style docstrings"
+# - "Implement [feature] following clean architecture patterns"
+# - "Add comprehensive type hints to this function"
+# - "Refactor this code for better AI understanding"
 ```
 
 ### 6. 📊 **Verify Everything Works**
@@ -124,158 +135,300 @@ make pr
 
 ## 🎯 **Available Commands**
 
+### Core Development
 | Command | Description |
 |---------|-------------|
 | `make help` | Show all available commands |
 | `make setup-env` | Set up development environment |
 | `make install-dev` | Install development dependencies |
 | `make test` | Run tests with coverage |
+| `make test-watch` | Run tests in watch mode |
 | `make ci` | Run full CI pipeline locally |
+
+### Code Quality
+| Command | Description |
+|---------|-------------|
+| `make format` | Format code (black + isort) |
+| `make lint` | Run linting (flake8) |
+| `make type-check` | Run type checking (mypy) |
+| `make security-check` | Run security scanning (bandit) |
+
+### Workflow Management
+| Command | Description |
+|---------|-------------|
 | `make workflow-status` | Check GitHub workflow status |
-| `make auto-fix` | Automatically fix workflow failures |
-| `make branch-from-issue` | Create branch from GitHub issue |
-| `make pr` | Create pull request |
+| `make check-workflows` | Analyze workflow failures |
+| `make auto-fix` | Automatically fix common issues |
+| `make auto-fix-push` | Fix issues and push changes |
 
-## 🔄 **Development Workflow**
+### Template Setup
+| Command | Description |
+|---------|-------------|
+| `make setup-template` | Interactive template setup |
+| `make setup-template-clean` | Setup with example removal |
 
-1. **Create Issue**: Use GitHub templates or `make issue`
-2. **Create Branch**: `make branch-from-issue`
-3. **Develop with TDD**: `make test-watch`
-4. **Quality Check**: `make ci`
-5. **Create PR**: `make pr`
-6. **Auto-fix failures**: `make auto-fix` (if CI fails)
+## 🔄 **AI-Assisted Development Workflow**
 
-## 📚 **Template Features**
+### 1. Create Issue with AI
+```bash
+# Create detailed issue with AI assistance
+make issue
 
-✅ **Complete Python Setup**
-- Python 3.11+ with virtual environment
-- Modern package configuration (pyproject.toml)
-- Development and production dependencies
+# AI prompt example:
+# "Create a comprehensive issue for implementing user authentication
+# with email validation, password hashing, and session management"
+```
 
-✅ **Code Quality Assurance**
-- Black formatting (88 char line length)
-- isort import sorting
-- flake8 linting
-- mypy type checking (strict mode)
-- bandit security scanning
-- pre-commit hooks
+### 2. Branch Creation
+```bash
+# Create feature branch from GitHub issue
+make branch-from-issue
+```
 
-✅ **Testing Framework**
-- pytest with comprehensive configuration
-- Test coverage reporting (80%+ target)
-- HTML coverage reports
-- Example test structure
+### 3. Test-Driven Development
+```bash
+# Start test watching
+make test-watch
 
-✅ **GitHub Actions CI/CD**
-- Multi-Python testing (3.11, 3.12)
-- Automated quality checks
-- Security scanning
-- Auto-formatting workflow
-- Auto-fix capability
+# Use AI to generate tests:
+# "Write comprehensive tests for email validation with edge cases"
+# "Generate parametrized tests for password hashing"
+# "Create integration tests for authentication flow"
+```
 
-✅ **Cursor AI Optimization**
-- Type hints everywhere
-- Comprehensive docstrings
-- Clean architecture examples
-- AI-friendly project structure
+### 4. Implementation with AI
+```python
+# AI-friendly implementation patterns:
 
-✅ **Developer Experience**
-- One-command setup
-- Automated workflows
-- Real-time monitoring
-- Comprehensive documentation
+# 1. Use comprehensive type hints
+from typing import Optional, Dict, Any, List
+from pathlib import Path
 
-## 🛠️ **Customization**
+def process_user_data(
+    user_data: Dict[str, Any],
+    validation_rules: List[str],
+    output_path: Optional[Path] = None
+) -> Dict[str, Any]:
+    """
+    Process user data with comprehensive validation.
+
+    Parameters
+    ----------
+    user_data : Dict[str, Any]
+        Raw user data to process
+    validation_rules : List[str]
+        List of validation rules to apply
+    output_path : Optional[Path], default=None
+        Path to save processed data
+
+    Returns
+    -------
+    Dict[str, Any]
+        Processed and validated user data
+    """
+    # Implementation here
+    pass
+
+# 2. Use numpy-style docstrings
+# 3. Follow clean architecture patterns
+# 4. Include comprehensive examples
+```
+
+### 5. Quality Assurance
+```bash
+# Run all quality checks
+make ci
+
+# Auto-fix common issues
+make auto-fix
+
+# Check workflow status
+make workflow-status
+```
+
+## 📚 **Template Features for AI Development**
+
+### ✅ **AI-Optimized Code Structure**
+- **Comprehensive Type Hints**: Every function and class includes complete type annotations
+- **Numpy-Style Docstrings**: Detailed, structured documentation with examples
+- **Clean Architecture**: Clear separation of concerns and design patterns
+- **Immutable Operations**: Functions without side effects for better AI understanding
+
+### ✅ **Development Environment**
+- **Python 3.11+**: Modern Python with latest features
+- **Virtual Environment**: Isolated dependency management
+- **One-Command Setup**: `make setup-env` for instant development
+- **Pre-commit Hooks**: Automated quality checks
+
+### ✅ **Code Quality Assurance**
+- **Black Formatting**: 88-character line length, consistent style
+- **isort Import Sorting**: Organized imports with Black compatibility
+- **flake8 Linting**: Code quality enforcement
+- **mypy Type Checking**: Strict type checking for AI assistance
+- **bandit Security**: Vulnerability scanning
+- **pytest Testing**: 80%+ coverage target
+
+### ✅ **Automated Workflows**
+- **GitHub Actions CI/CD**: Multi-version testing and quality checks
+- **Auto-formatting**: Weekly automated code formatting
+- **Auto-fix**: Automatic resolution of common CI failures
+- **Workflow Monitoring**: Real-time status and failure analysis
+
+### ✅ **AI Integration**
+- **Cursor Optimized**: Tailored for Cursor AI IDE
+- **GitHub Copilot Ready**: Compatible with GitHub Copilot
+- **Context-Rich Documentation**: Comprehensive examples and patterns
+- **AI-Friendly Commands**: Simplified workflow operations
+
+## 🛠️ **Customization Guide**
 
 ### Adding New Dependencies
 
-**For production:**
+**For production dependencies:**
 ```bash
 # Edit pyproject.toml
 [project]
 dependencies = [
-    "your-package>=1.0.0",
+    "requests>=2.31.0",
+    "pydantic>=2.0.0",
+    "fastapi>=0.100.0",
 ]
 ```
 
-**For development:**
+**For development dependencies:**
 ```bash
 # Edit pyproject.toml
 [project.optional-dependencies]
 dev = [
-    # ... existing packages
-    "your-dev-package>=1.0.0",
+    # ... existing dependencies
+    "new-dev-package>=1.0.0",
 ]
 ```
 
-### Adding New Quality Tools
+### Adding New Modules
 
-**Edit `.pre-commit-config.yaml`:**
-```yaml
-repos:
-  # ... existing repos
-  - repo: https://github.com/your-tool/repo
-    rev: v1.0.0
-    hooks:
-      - id: your-tool
+**Create new module with AI-friendly structure:**
+```python
+# src/your_module.py
+"""
+Your module description.
+
+This module provides functionality for [specific purpose]
+with comprehensive type hints and numpy-style docstrings.
+"""
+
+from typing import Dict, List, Optional, Any
+from pathlib import Path
+
+class YourClass:
+    """
+    Class description with comprehensive docstring.
+
+    Parameters
+    ----------
+    config : Dict[str, Any]
+        Configuration dictionary
+
+    Attributes
+    ----------
+    config : Dict[str, Any]
+        Configuration settings
+
+    Examples
+    --------
+    >>> your_class = YourClass({'key': 'value'})
+    >>> result = your_class.process_data(data)
+    """
+
+    def __init__(self, config: Dict[str, Any]) -> None:
+        """Initialize with configuration."""
+        self.config = config
 ```
 
-**Edit `.github/workflows/ci.yml`:**
-```yaml
-- name: Run your tool
-  run: |
-    your-tool src tests
+### Testing New Modules
+
+**Create comprehensive tests:**
+```python
+# tests/test_your_module.py
+"""
+Comprehensive tests for your_module.
+
+This test suite covers all functionality with edge cases
+and follows TDD principles for AI-assisted development.
+"""
+
+import pytest
+from typing import Dict, Any
+
+from src.your_module import YourClass
+
+
+class TestYourClass:
+    """Test suite for YourClass."""
+
+    def test_initialization(self) -> None:
+        """Test class initialization."""
+        config = {'key': 'value'}
+        instance = YourClass(config)
+        assert instance.config == config
 ```
 
-### Custom Makefile Commands
-
-**Add to `Makefile`:**
-```makefile
-your-command:
-	@echo "Running your custom command"
-	your-tool --options
-```
-
-## 🚨 **Troubleshooting**
+## 🔍 **Troubleshooting**
 
 ### Common Issues
 
-**Virtual environment issues:**
+**Environment setup fails:**
 ```bash
-rm -rf venv
+# Clean and retry
+make clean
 make setup-env
-source venv/bin/activate
-make install-dev
 ```
 
-**GitHub CLI not working:**
+**Tests not running:**
 ```bash
-gh auth login
-gh auth status
+# Check Python path and reinstall
+echo $PYTHONPATH
+make clean && make install-dev
 ```
 
 **Pre-commit hooks failing:**
 ```bash
+# Update hooks
 pre-commit autoupdate
-pre-commit install
-make pre-commit
+make format
 ```
 
-### Getting Help
+**Type checking errors:**
+```bash
+# Install missing type stubs
+pip install types-requests types-PyYAML
+```
 
-1. Check the comprehensive documentation in `docs/`
-2. Review GitHub issues and workflows
-3. Use Cursor AI for code-specific help
-4. Create issues using the provided templates
+### AI-Specific Issues
 
-## 🎉 **You're Ready!**
+**AI not understanding code structure:**
+- Ensure all functions have comprehensive type hints
+- Use numpy-style docstrings with examples
+- Follow clean architecture patterns
 
-Your Cursor AI-optimized Python project is ready for development. The template provides:
+**AI suggestions not accurate:**
+- Check that docstrings include detailed examples
+- Verify type hints are complete and accurate
+- Ensure code follows established patterns
 
-- **Zero-friction setup** with one command
-- **Automated quality assurance**
-- **AI-optimized development** workflows
-- **Professional CI/CD** pipeline
-- **Comprehensive documentation**
+## 📖 **Additional Resources**
 
-Happy coding with Cursor AI! 🚀
+- **[Main README](README.md)**: Comprehensive project overview
+- **[Development Workflow](docs/DEVELOPMENT_WORKFLOW.md)**: Detailed development process
+- **[Workflow Monitoring](docs/WORKFLOW_MONITORING.md)**: Automated workflow management
+- **[AI Context Documentation](docs/AI_CONTEXT.md)**: AI development best practices
+
+## 🤝 **Support**
+
+For issues or questions:
+1. Check the documentation files
+2. Review the example code
+3. Run `make help` for available commands
+4. Create an issue in the repository
+
+Happy coding with AI assistance! 🚀

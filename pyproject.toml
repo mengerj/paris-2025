@@ -3,21 +3,24 @@ requires = ["setuptools>=65.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "paris-2025"
+name = "AI-dev-py-template"
 version = "0.1.0"
-description = "Testing some cursor features for a retreat"
+description = "Comprehensive Python development template optimized for AI-assisted development (Cursor, GitHub Copilot, etc.)"
 readme = "README.md"
 license = {file = "LICENSE"}
 authors = [
     {name = "mengerj", email = "mengerj@example.com"}
 ]
 classifiers = [
-    "Development Status :: 3 - Alpha",
+    "Development Status :: 4 - Beta",
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.11",
     "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Software Development :: Code Generators",
+    "Topic :: Software Development :: Quality Assurance",
 ]
 requires-python = ">=3.11"
 dependencies = []
@@ -32,12 +35,13 @@ dev = [
     "pytest-cov>=4.1.0",
     "pre-commit>=3.4.0",
     "coverage>=7.3.0",
+    "bandit>=1.7.0",
 ]
 
 [project.urls]
-Homepage = "https://github.com/mengerj/paris-2025"
-Repository = "https://github.com/mengerj/paris-2025.git"
-Issues = "https://github.com/mengerj/paris-2025/issues"
+Homepage = "https://github.com/mengerj/AI-dev-py-template"
+Repository = "https://github.com/mengerj/AI-dev-py-template.git"
+Issues = "https://github.com/mengerj/AI-dev-py-template/issues"
 
 [tool.setuptools.packages.find]
 where = ["src"]
@@ -65,7 +69,7 @@ extend-exclude = '''
 profile = "black"
 multi_line_output = 3
 line_length = 88
-known_first_party = ["paris_2025"]
+known_first_party = ["ai_dev_py_template"]
 
 [tool.mypy]
 python_version = "3.11"
@@ -116,4 +120,4 @@ exclude_lines = [
     "if __name__ == .__main__.:",
     "class .*\\bProtocol\\):",
     "@(abc\\.)?abstractmethod",
-] 
+]

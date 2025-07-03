@@ -1,6 +1,6 @@
 # Workflow Monitoring & Auto-Fix System
 
-This document describes the comprehensive workflow monitoring and automatic fixing system that makes GitHub workflow results easily accessible and actionable for Cursor AI development.
+This document describes the comprehensive workflow monitoring and automatic fixing system that makes GitHub workflow results easily accessible and actionable for AI-assisted development using the AI-dev-py-template.
 
 ## 🎯 Overview
 
